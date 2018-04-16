@@ -2,6 +2,8 @@
 #include <cmath>
 #include <vector>
 #include <mpi.h>
+#include <cstring>
+#include <cstdlib>
 
 using namespace std;
 
@@ -23,12 +25,12 @@ const double lambda1 = 1;
 const double lambda2 = 3;
 
 void setBorderConditions(
-	vector<vector<vector<double>>> &a0,
-	vector<vector<vector<double>>> &a1,
-	vector<vector<vector<double>>> &b0,
-	vector<vector<vector<double>>> &b1,
-	vector<vector<vector<double>>> &c0,
-	vector<vector<vector<double>>> &c1
+	vector<vector<vector<double> > > &a0,
+	vector<vector<vector<double> > > &a1,
+	vector<vector<vector<double> > > &b0,
+	vector<vector<vector<double> > > &b1,
+	vector<vector<vector<double> > > &c0,
+	vector<vector<vector<double> > > &c1
 ) {
 	for (int i2 = 0; i2 < n2; ++i2) {
 		for (int i3 = 0; i3 < n3; ++i3) {
@@ -58,7 +60,7 @@ void setBorderConditions(
 	}
 }
 
-void setInitialApproximation(vector<vector<vector<vector<double>>>> &y) {
+void setInitialApproximation(vector<vector<vector<vector<double> > > > &y) {
 	for (int i1 = 0; i1 < n1; ++i1) {
 		for (int i2 = 0; i2 < n2; ++i2) {
 			for (int i3 = 0; i3 < n3; ++i3) {
@@ -88,10 +90,10 @@ void executeMaster() {
 	MPI_Request sendRequest;
 	MPI_Request receiveRequest;
 
-	vector<vector<vector<vector<double>>>> y =
-		vector<vector<vector<vector<double>>>>(n1, vector<vector<vector<double>>>(n2, vector<vector<double>>(n3, vector<double>(tmax, 0.))));
+	vector<vector<vector<vector<double> > > > y =
+		vector<vector<vector<vector<double> > > >(n1, vector<vector<vector<double> > >(n2, vector<vector<double> >(n3, vector<double>(tmax, 0.))));
 
-	vector<vector<vector<double>>> tempY = vector<vector<vector<double>>>(n1, vector<vector<double>>(n2, vector<double>(n3)));
+	vector<vector<vector<double> > > tempY = vector<vector<vector<double> > >(n1, vector<vector<double> >(n2, vector<double>(n3)));
 
 	setInitialApproximation(y);
 
@@ -207,12 +209,12 @@ void executeWorker() {
 	MPI_Request sendRequest;
 	MPI_Request receiveRequest;
 
-	vector<vector<vector<double>>> a0 = vector<vector<vector<double>>>(n2, vector<vector<double>>(n3, vector<double>(tmax)));
-	vector<vector<vector<double>>> a1 = vector<vector<vector<double>>>(n2, vector<vector<double>>(n3, vector<double>(tmax)));
-	vector<vector<vector<double>>> b0 = vector<vector<vector<double>>>(n1, vector<vector<double>>(n3, vector<double>(tmax)));
-	vector<vector<vector<double>>> b1 = vector<vector<vector<double>>>(n1, vector<vector<double>>(n3, vector<double>(tmax)));
-	vector<vector<vector<double>>> c0 = vector<vector<vector<double>>>(n1, vector<vector<double>>(n2, vector<double>(tmax)));
-	vector<vector<vector<double>>> c1 = vector<vector<vector<double>>>(n1, vector<vector<double>>(n2, vector<double>(tmax)));
+	vector<vector<vector<double> > > a0 = vector<vector<vector<double> > >(n2, vector<vector<double> >(n3, vector<double>(tmax)));
+	vector<vector<vector<double> > > a1 = vector<vector<vector<double> > >(n2, vector<vector<double> >(n3, vector<double>(tmax)));
+	vector<vector<vector<double> > > b0 = vector<vector<vector<double> > >(n1, vector<vector<double> >(n3, vector<double>(tmax)));
+	vector<vector<vector<double> > > b1 = vector<vector<vector<double> > >(n1, vector<vector<double> >(n3, vector<double>(tmax)));
+	vector<vector<vector<double> > > c0 = vector<vector<vector<double> > >(n1, vector<vector<double> >(n2, vector<double>(tmax)));
+	vector<vector<vector<double> > > c1 = vector<vector<vector<double> > >(n1, vector<vector<double> >(n2, vector<double>(tmax)));
 
 	setBorderConditions(a0, a1, b0, b1, c0, c1);
 
@@ -234,7 +236,7 @@ void executeWorker() {
 	double *inArr, *outArr;
 	double t, task, block, messageSize;
 
-	vector<vector<vector<double>>> tempY = vector<vector<vector<double>>>(blockSize1, vector<vector<double>>(n2, vector<double>(n3)));
+	vector<vector<vector<double> > > tempY = vector<vector<vector<double> > >(blockSize1, vector<vector<double> >(n2, vector<double>(n3)));
 
 	MPI_Send(NULL, 0, MPI_DOUBLE, 0, 1, MPI_COMM_WORLD);
 	MPI_Irecv(input1, buffSize, MPI_DOUBLE, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &receiveRequest);

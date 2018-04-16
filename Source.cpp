@@ -14,40 +14,40 @@ const double h2 = 0.01;
 const double h3 = 0.01;
 const double tau = 0.01;
 
-vector<vector<vector<vector<double>>>> y = 
-	vector<vector<vector<vector<double>>>>(n1, 
-		vector<vector<vector<double>>>(n2, 
-			vector<vector<double>>(n3, 
+vector<vector<vector<vector<double> > > > y =
+	vector<vector<vector<vector<double> > > >(n1,
+		vector<vector<vector<double> > >(n2,
+			vector<vector<double> >(n3,
 				vector<double>(tmax, 0.))));
 
-vector<vector<vector<double>>> a0 =
-	vector<vector<vector<double>>>(n2,
-		vector<vector<double>>(n3,
+vector<vector<vector<double> > > a0 =
+	vector<vector<vector<double> > >(n2,
+		vector<vector<double> >(n3,
 			vector<double>(tmax)));
 
-vector<vector<vector<double>>> a1 =
-	vector<vector<vector<double>>>(n2,
-		vector<vector<double>>(n3,
+vector<vector<vector<double> > > a1 =
+	vector<vector<vector<double> > >(n2,
+		vector<vector<double> >(n3,
 			vector<double>(tmax)));
 
-vector<vector<vector<double>>> b0 =
-	vector<vector<vector<double>>>(n1,
-		vector<vector<double>>(n3,
+vector<vector<vector<double> > > b0 =
+	vector<vector<vector<double> > >(n1,
+		vector<vector<double> >(n3,
 			vector<double>(tmax)));
 
-vector<vector<vector<double>>> b1 =
-	vector<vector<vector<double>>>(n1,
-		vector<vector<double>>(n3,
+vector<vector<vector<double> > > b1 =
+	vector<vector<vector<double> > >(n1,
+		vector<vector<double> >(n3,
 			vector<double>(tmax)));
 
-vector<vector<vector<double>>> c0 =
-	vector<vector<vector<double>>>(n1,
-		vector<vector<double>>(n2,
+vector<vector<vector<double> > > c0 =
+	vector<vector<vector<double> > >(n1,
+		vector<vector<double> >(n2,
 			vector<double>(tmax)));
 
-vector<vector<vector<double>>> c1 =
-	vector<vector<vector<double>>>(n1,
-		vector<vector<double>>(n2,
+vector<vector<vector<double> > > c1 =
+	vector<vector<vector<double> > >(n1,
+		vector<vector<double> >(n2,
 			vector<double>(tmax)));
 
 const double lambda1 = 1;
@@ -129,10 +129,10 @@ void main()
 	double *alpha;
 	double *beta;
 
-	vector<vector<vector<vector<double>>>> tempY =
-		vector<vector<vector<vector<double>>>>(n1,
-			vector<vector<vector<double>>>(n2,
-				vector<vector<double>>(n3,
+	vector<vector<vector<vector<double> > > > tempY =
+		vector<vector<vector<vector<double> > > >(n1,
+			vector<vector<vector<double> > >(n2,
+				vector<vector<double> >(n3,
 					vector<double>(2))));
 
 	for (j = 0; j < tmax - 1; ++j)
