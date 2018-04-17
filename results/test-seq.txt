@@ -1,0 +1,55 @@
+n = 100
+
+real	0m4.763s
+user	0m4.712s
+sys	0m0.048s
+n = 110
+
+real	0m6.229s
+user	0m6.196s
+sys	0m0.032s
+n = 120
+
+real	0m7.776s
+user	0m7.712s
+sys	0m0.060s
+n = 130
+
+real	0m9.173s
+user	0m9.116s
+sys	0m0.056s
+n = 140
+
+real	0m11.985s
+user	0m11.916s
+sys	0m0.068s
+n = 150
+
+real	0m13.640s
+user	0m13.560s
+sys	0m0.076s
+n = 160
+
+real	0m15.935s
+user	0m15.824s
+sys	0m0.108s
+n = 170
+
+real	0m17.579s
+user	0m17.480s
+sys	0m0.096s
+n = 180
+
+real	0m20.591s
+user	0m20.472s
+sys	0m0.120s
+n = 190
+
+real	0m23.229s
+user	0m23.080s
+sys	0m0.148s
+n = 200
+
+real	0m25.990s
+user	0m25.852s
+sys	0m0.136s
