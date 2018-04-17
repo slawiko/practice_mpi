@@ -195,7 +195,7 @@ void executeMaster() {
 			}
 		}
 
-		std::cout << maxDifference << std::endl;
+		//std::cout << maxDifference << std::endl;
 	}
 
 	delete[] input1;
