@@ -116,7 +116,7 @@ void setInitialApproximation()
 	}
 }
 
-void main()
+int main()
 {
 	setBorderConditions();
 
@@ -235,8 +235,8 @@ void main()
 			}
 		}
 
-		std::cout << maxDifference << std::endl;
+		//std::cout << maxDifference << std::endl;
 	}
 
-	system("pause");
+	return 0;
 }
