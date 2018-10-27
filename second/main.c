@@ -50,7 +50,6 @@ int main(int argc, char* argv[]) {
 
         MPI_Status status;
 
-
         for (int i = 0; i < block_count; ++i) {
             MPI_Recv(&tag_ready, 1, MPI_INT, MPI_ANY_SOURCE, tag_ready, MPI_COMM_WORLD, &status);
             MPI_Send(intervals + i * r, r, MPI_DOUBLE, status.MPI_SOURCE, tag_new_block, MPI_COMM_WORLD);
